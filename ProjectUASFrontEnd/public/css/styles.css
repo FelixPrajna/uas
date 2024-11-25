@@ -784,7 +784,7 @@ p {
 /* Kontainer utama untuk anidrag */
 .ani {
     margin: 0; /* Mengatur margin menjadi 0. */
-    background-image: url(img/bg.jpg); /* Mengatur gambar latar belakang. */
+    background-image: url(/img/bg.jpg); /* Mengatur gambar latar belakang. */
     background-size: cover; /* Mengatur gambar agar menutupi seluruh area. */
     background-position: center; /* Mengatur posisi gambar di tengah. */
     background-attachment: fixed; /* Mengatur gambar latar tetap saat menggulir. */
