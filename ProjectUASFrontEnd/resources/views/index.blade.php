@@ -8,34 +8,17 @@
     <link rel="stylesheet" href="/css/styles.css">
     <title>Bite of Bliss</title>
 </head>
+
 <body>
     <!-- Navigation Bar -->
-    <div class="container">
-        <nav class="main-nav">
-            <img src="/img/logo.png" alt="logo" class="logo">
-            <ul class="main-menu">
-                <li><a href="/">Home</a></li>
-                <li class="dropdown">
-                    <a href="#">Restaurants</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="pierre">Pierre</a></li>
-                        <li><a href="altitude">Altitude Grill</a></li>
-                        <li><a href="ojju">Ojju</a></li>
-                        <li><a href="isshin">Isshin</a></li>
-                        <!-- Tambah link restoran lainnya di sini -->
-                    </ul>
-                </li>
-                <li><a href="about">About Bite of Bliss</a></li>
-                <li><a href="#">Contact Us</a></li>
-            </ul>
-        </nav>
+    @include('partials.navbar')
 
-        <!-- Hero Section -->
-        <header id="hero-section" class="hero">
-            <div class="hero-content">
-                <a href="#" class="btn"><i class="fas fa-chevron-right"></i></a>
-            </div>
-        </header>
+<!-- Hero Section -->
+<header id="hero-section" class="hero">
+    <div class="hero-content">
+        <a href="#" class="btn"><i class="fas fa-chevron-right"></i></a>
+    </div>
+</header>
 
  <!-- Our Brands Section -->
 <section class="our-brands">

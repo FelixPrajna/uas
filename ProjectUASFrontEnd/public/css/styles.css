@@ -888,3 +888,20 @@ p {
     height: 100%; /* Mengatur tinggi gambar menjadi 100%. */
     object-fit: cover; /* Mengatur gambar agar menutupi area tanpa mengubah rasio aspek. */
 }
+
+nav ul li button {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+form {
+    margin-top: 1rem;
+}
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+form input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+}
