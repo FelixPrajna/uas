@@ -15,6 +15,11 @@ class AuthController extends Controller
 }
 public function register(Request $request)
 {
+    \Log::info('CSRF Token:', [
+        'session' => session('_token'),
+        'input' => $request->_token,
+    ]);
+    
     $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email',

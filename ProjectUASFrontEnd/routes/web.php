@@ -18,7 +18,7 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.pr
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 Route::get('/about', function () {
     return view('about');
