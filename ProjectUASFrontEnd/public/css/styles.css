@@ -27,50 +27,39 @@ ul {
     max-width: 1200px; /* Mengatur lebar maksimum kontainer menjadi 1200px. */
 }
 
-/* Navigation */
+/* Navbar Styles */
 .main-nav {
-    display: flex; /* Mengatur tampilan elemen menjadi fleksibel untuk mendukung tata letak responsif. */
-    align-items: center; /* Menyelaraskan item di dalam flex container secara vertikal ke tengah. */
-    justify-content: space-between; /* Memberikan jarak yang sama antara item di dalam flex container. */
-    height: 60px; /* Mengatur tinggi navbar menjadi 60 piksel. */
-    padding: 20px 0; /* Menambahkan padding vertikal (atas dan bawah) 20 piksel, tanpa padding horizontal. */
-    position: sticky; /* Mengatur posisi elemen agar tetap terlihat saat di-scroll, hingga batas tertentu. */
-    z-index: 1000; /* Mengatur lapisan elemen agar tetap di atas elemen lain. */
-    top: 0; /* Menempatkan elemen pada posisi paling atas dari viewport saat sticky. */
-    background-color: #f5f5f5; /* Mengatur warna latar belakang navbar. */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 20px 0;
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    background-color: #f5f5f5;
 }
 
 .main-nav ul {
-    display: flex; /* Mengatur tampilan elemen daftar menjadi fleksibel. */
-    align-items: center; /* Menyelaraskan item di dalam daftar secara vertikal ke tengah. */
+    display: flex;
+    align-items: center;
 }
 
 .main-nav ul li {
-    padding: 0 20px; /* Menambahkan padding horizontal (kiri dan kanan) 20 piksel pada setiap item daftar. */
+    padding: 0 20px;
 }
 
 .main-nav .logo {
-    width: 200px; /* Mengatur lebar logo menjadi 200 piksel. */
+    width: 200px;
+}
+
+.main-nav ul li a {
+    color: #333;
+    text-decoration: none;
 }
 
 .main-nav ul li a:hover {
-    border-bottom: 2px solid #262626; /* Menambahkan garis bawah saat tautan di-hover dengan ketebalan 2 piksel dan warna #262626. */
-}
-
-.cta-section {
-    margin-right: 20px; /* Menambahkan margin kanan 20 piksel pada section CTA. */
-}
-
-.cta-button {
-    background: #e67e22; /* Mengatur warna latar belakang tombol CTA. */
-    padding: 10px 20px; /* Menambahkan padding vertikal 10 piksel dan horizontal 20 piksel pada tombol. */
-    color: white; /* Mengatur warna teks tombol menjadi putih. */
-    border-radius: 30px; /* Membuat sudut tombol membulat dengan radius 30 piksel. */
-    font-weight: bold; /* Mengatur ketebalan font tombol menjadi bold. */
-}
-
-.cta-button:hover {
-    background-color: #d35400; /* Mengubah warna latar belakang tombol saat di-hover. */
+    border-bottom: 2px solid #262626;
 }
 
 /* Hero Section */
@@ -388,53 +377,62 @@ footer {
     margin-top: 10px; /* Margin atas 10 piksel untuk jarak dengan elemen sebelumnya. */
 }
 
-/* Dropdown Menu Styles */
+/* Dropdown Styles */
 .main-nav .dropdown {
-    position: relative; /* Mengatur posisi dropdown relatif terhadap elemen induknya. */
+    position: relative;
 }
 
 .main-nav .dropdown-menu {
-    display: none; /* Menyembunyikan menu dropdown secara default. */
-    position: absolute; /* Mengatur posisi menu dropdown secara absolut. */
-    background-color: #fff; /* Warna latar belakang untuk menu dropdown. */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Memberikan bayangan pada menu dropdown. */
-    padding: 10px; /* Padding di dalam menu dropdown. */
-    min-width: 200px; /* Lebar minimum menu dropdown. */
-    z-index: 1000; /* Mengatur z-index agar menu dropdown muncul di atas elemen lain. */
-    top: 100%; /* Menempatkan dropdown di bawah elemen induk. */
-    left: 0; /* Mengatur posisi horizontal menu dropdown. */
+    display: block;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    position: absolute;
+    background-color: #f8f9fa;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    min-width: 200px;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+    transition: all 0.3s ease;
 }
 
 .main-nav .dropdown-menu li {
-    padding: 10px 0; /* Padding vertikal untuk setiap item dalam menu dropdown. */
+    padding: 10px 0;
 }
 
 .main-nav .dropdown-menu li a {
-    display: block; /* Mengatur link agar mengisi seluruh area item. */
-    color: #333; /* Warna teks untuk link. */
-    padding: 10px 20px; /* Padding di dalam link. */
-    white-space: nowrap; /* Mencegah teks membungkus ke baris berikutnya. */
+    display: block;
+    color: #000;
+    padding: 10px 20px;
+    white-space: nowrap;
 }
 
 .main-nav .dropdown-menu li a:hover {
-    background-color: #f0f0f0; /* Mengubah warna latar belakang saat hover pada link. */
+    background-color: #e9ecef;
 }
 
-/* Show the dropdown menu on hover */
+/* Show Dropdown on Hover (Desktop) */
 .main-nav .dropdown:hover .dropdown-menu {
-    display: block; /* Menampilkan menu dropdown saat elemen induk dihover. */
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
-/* Ensure responsiveness on mobile */
+/* Mobile-Friendly Styles */
 @media (max-width: 768px) {
     .main-nav ul {
-        flex-direction: column; /* Mengatur arah flex menjadi kolom pada layar kecil. */
+        flex-direction: column;
     }
 
     .main-nav .dropdown-menu {
-        position: static; /* Mengubah posisi menu dropdown menjadi statis pada layar kecil. */
-        box-shadow: none; /* Menghilangkan bayangan pada menu dropdown. */
-        padding-left: 20px; /* Menambahkan padding kiri pada menu dropdown. */
+        position: static;
+        box-shadow: none;
+        padding-left: 20px;
+        opacity: 1; /* Always visible for better UX on mobile */
+        transform: translateY(0);
+        pointer-events: auto;
     }
 }
 
@@ -905,3 +903,55 @@ form input {
     padding: 0.5rem;
     width: 100%;
 }
+
+/* Style for Login Button */
+.btn-login {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 25px;
+    background-color: #38bdf8; /* Warna biru cerah */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #0284c7; /* Warna biru lebih gelap */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-login:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Style for Logout Button */
+.btn-logout {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 25px;
+    background-color: #f87171; /* Warna merah cerah */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+    background-color: #e11d48; /* Warna merah lebih gelap */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-logout:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+

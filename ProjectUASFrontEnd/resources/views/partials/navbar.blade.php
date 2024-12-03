@@ -16,12 +16,14 @@
             <li><a href="about">About Bite of Bliss</a></li>
             <li><a href="#">Contact Us</a></li>
             <!-- Cek apakah user sudah login -->
-            @if(session('user'))
-                <li><a href="{{ route('logout') }}">Logout</a></li> <!-- Tombol Logout -->
-                <li><span>Welcome, {{ session('user')['name'] }}</span></li> <!-- Nama User -->
-            @else
-                <li><a href="login">Login</a></li> <!-- Tombol Login -->
-            @endif
+            <!-- Tombol Login -->
+@if(session('user'))
+    <li><a href="{{ route('logout') }}" class="btn-logout">Logout</a></li>
+    <li><span>Welcome, {{ session('user')['name'] }}</span></li> <!-- Nama User -->
+@else
+    <li><a href="login" class="btn-login">Login</a></li>
+@endif
+
         </ul>
     </nav>
 </div>
