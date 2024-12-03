@@ -15,7 +15,13 @@
             </li>
             <li><a href="about">About Bite of Bliss</a></li>
             <li><a href="#">Contact Us</a></li>
-            <li><a href="login">Login</a></li> <!-- Tombol Login -->
+            <!-- Cek apakah user sudah login -->
+            @if(session('user'))
+                <li><a href="{{ route('logout') }}">Logout</a></li> <!-- Tombol Logout -->
+                <li><span>Welcome, {{ session('user')['name'] }}</span></li> <!-- Nama User -->
+            @else
+                <li><a href="login">Login</a></li> <!-- Tombol Login -->
+            @endif
         </ul>
     </nav>
 </div>

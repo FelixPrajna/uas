@@ -14,6 +14,8 @@ Route::get('/register', function () {
 
 Route::post('/register', [AuthController::class, 'register'])->name('register.process');
 
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 
 Route::get('/', function () {

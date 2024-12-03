@@ -60,10 +60,16 @@ public function login(Request $request)
     $user = $collection->findOne(['email' => $request->email]);
 
     if ($user && Hash::check($request->password, $user['password'])) {
-        // Simpan token atau session jika diperlukan
-        session(['user' => $user]);
+        // Simpan data user yang diperlukan ke dalam session
+        session([
+            'user' => [
+                'id' => (string)$user['_id'], // Simpan ID user jika diperlukan
+                'name' => $user['name'],
+                'email' => $user['email'],
+            ]
+        ]);
 
-        return redirect()->route('index')->with('success', 'Login successful!');
+        return redirect('/')->with('success', 'Login successful!'); // Arahkan ke halaman Home
     }
 
     return redirect()->back()->withErrors(['error' => 'Invalid credentials']);
@@ -71,35 +77,15 @@ public function login(Request $request)
 
 
 
-    public function logout(Request $request)
-        {
-            return response()->json(['message' => 'Logged out successfully']);
-        }
 
-    
-    public function changePassword(Request $request)
-        {
-            $request->validate([
-                'email' => 'required|email',
-                'current_password' => 'required',
-                'new_password' => 'required|min:6',
-            ]);
+public function logout(Request $request)
+{
+    // Hapus data sesi
+    session()->forget('user');
+    session()->flush();
 
-            $client = new Client(env('DB_URI'));
-            $collection = $client->uas_projek->users;
-
-            $user = $collection->findOne(['email' => $request->email]);
-
-            if (!$user || !Hash::check($request->current_password, $user['password'])) {
-                return response()->json(['error' => 'Current password is incorrect'], 400);
-            }
-
-            $collection->updateOne(
-                ['email' => $request->email],
-                ['$set' => ['password' => bcrypt($request->new_password), 'updated_at' => now()]]
-            );
-
-            return response()->json(['message' => 'Password changed successfully']);
-        }
+    // Redirect ke halaman utama
+    return redirect()->route('index')->with('success', 'You have been logged out.');
+}
 
 }
