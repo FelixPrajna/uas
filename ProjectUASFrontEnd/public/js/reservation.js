@@ -1,7 +1,7 @@
 var app = angular.module('reservationApp', []);
 
 function redirectToHome() {
-    window.location.href = '/home';
+    window.location.href = '/';
 }
 
 app.controller('ReservationController', function($scope, $http) {

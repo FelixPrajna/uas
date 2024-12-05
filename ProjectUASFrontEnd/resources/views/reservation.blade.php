@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="css/reservation.css">
     <link rel="icon" href="./images/favicon.ico">
-    <title>biteofbliss Reservation</title>
+    <title>BiteOfBliss Reservation</title>
 </head>
 <body>
     <div id="wrapper">
