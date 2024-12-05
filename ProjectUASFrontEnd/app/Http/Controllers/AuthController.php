@@ -11,32 +11,33 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        $data = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+    $data = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-        $user = User::findByEmail($data['email']);
+    $user = User::findByEmail($data['email']);
 
-        if (!$user) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Your account is not registered',
-            ], 404);
-        }
-
-        if (!Hash::check($data['password'], $user['password'])) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Your password does not match',
-            ], 401);
-        }
-
-        session(['user' => (array) $user]);
-
-        // Arahkan ke halaman home
-        return redirect('/');
+    if (!$user) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Your account is not registered',
+        ], 404);
     }
+
+    if (!Hash::check($data['password'], $user['password'])) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Your password does not match',
+        ], 401);
+    }
+
+    // Menyimpan data user ke session menggunakan jsonSerialize()
+    session(['user' => $user->jsonSerialize()]);
+
+    // Arahkan ke halaman home
+    return redirect('/');
+}
 
     public function register(Request $request)
     {
@@ -55,4 +56,12 @@ class AuthController extends Controller
             'userId' => (string) $userId,
         ], 201);
     }
+    public function logout()
+    {
+        session()->forget('user');  // Menghapus data user dari session
+        return redirect('/');  // Arahkan kembali ke halaman home atau halaman yang diinginkan
+    }
+    
+    
+
 }

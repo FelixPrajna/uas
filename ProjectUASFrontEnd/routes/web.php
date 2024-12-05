@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\ConsultationListController;
+use Illuminate\Support\Facades\Auth;
 
 // Tambahkan rute baru untuk menghapus akun
 Route::post('/delete-account', [UserController::class, 'deleteAccount'])->name('delete-account');
@@ -44,13 +45,9 @@ Route::get('/api/users', function () {
     ]);
 });
 
-Route::get('/logout', function () {
-    session()->forget('username');
-    return redirect('/');
-});
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
-Route::post('/consultations', [ConsultationController::class, 'store'])->name('consultations.store');
+Route::post('/reservations', [ConsultationController::class, 'store'])->name('reservations.store');
 Route::get('/consultation-list', [ConsultationListController::class, 'index'])->name('consultation.list');
 Route::get('/api/consultations', [ConsultationListController::class, 'getConsultations']);
 Route::get('/consultation', function () {
