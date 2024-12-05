@@ -954,28 +954,80 @@ form input {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
-/* Style for Login Button */
+/* Style for reservation Button */
 .btn-reservation {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 30px;
     font-size: 14px;
     font-weight: bold;
     color: #ffffff;
     text-decoration: none;
-    border-radius: 25px;
-    background-color: #78a52a; /* Warna biru cerah */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #f77f00, #ffba08); /* Gradasi oranye hangat */
+    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+    border-radius: 12px; /* Menambahkan sudut melengkung */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease, transform 0.2s ease;
 }
 
 .btn-reservation:hover {
-    background-color: #6dae23; /* Warna biru lebih gelap */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
+    background: linear-gradient(135deg, #e76f00, #f4a907); /* Gradasi lebih gelap */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+    transform: translateY(-3px) scale(1.05);
 }
 
 .btn-reservation:active {
-    transform: translateY(0);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Style for list Button */
+.btn-list {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    background: linear-gradient(135deg, #d00000, #ff6d6d); /* Gradasi merah menyala */
+    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+    border-radius: 12px; /* Menambahkan sudut melengkung */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease, transform 0.2s ease;
+}
+
+.btn-list:hover {
+    background: linear-gradient(135deg, #ba0000, #f55353); /* Gradasi lebih gelap */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.btn-list:active {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for setting Button */
+.btn-settings {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    background: linear-gradient(135deg, #6b4226, #b5838d); /* Gradasi coklat lembut */
+    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+    border-radius: 12px; /* Menambahkan sudut melengkung */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease, transform 0.2s ease;
+}
+
+.btn-settings:hover {
+    background: linear-gradient(135deg, #5a3820, #9f7280); /* Gradasi lebih gelap */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.btn-settings:active {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

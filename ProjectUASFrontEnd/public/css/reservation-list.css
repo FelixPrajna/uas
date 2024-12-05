@@ -1,55 +1,112 @@
 .table-responsive {
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Sudut lebih membulat */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Bayangan lebih lembut */
+    overflow: hidden;
     margin-top: 20px;
 }
 
+.table {
+    background-color: white;
+}
+
 .table thead th {
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #dee2e6;
-    padding: 12px;
+    background-color: #ff715b; /* Warna merah hangat (tema restoran) */
+    color: white; /* Warna teks */
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #eee;
 }
 
 .table tbody tr:hover {
-    background-color: #f8f9fa;
+    background-color: #ffeedb; /* Warna hover yang lembut */
+    transition: background 0.3s ease;
 }
 
 .table td {
-    padding: 12px;
+    padding: 15px;
     vertical-align: middle;
-}
-
-.btn-sm {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-}
-
-.form-control:focus, 
-.form-select:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-h2 {
+    font-size: 0.95rem;
     color: #333;
+}
+
+/* Tombol Aksi */
+.btn-sm {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-sm:hover {
+    background-color: #ff8c75;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Desain ulang bagian filter */
+.search-filter-section {
+    background-color: #ffeedb; /* Warna latar lembut */
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.search-filter-section .form-control,
+.search-filter-section .form-select {
+    border: 2px solid #ff715b;
+    border-radius: 8px;
+    padding: 10px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.search-filter-section .form-control:focus,
+.search-filter-section .form-select:focus {
+    border-color: #ff8c75;
+    box-shadow: 0 0 5px rgba(255, 113, 91, 0.5);
+}
+
+/* Tombol ASC */
+.search-filter-section .btn {
+    background-color: #ff715b;
+    color: white;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.search-filter-section .btn:hover {
+    background-color: #ff8c75;
+    transform: translateY(-2px);
+}
+
+/* Judul */
+h2 {
+    color: #ff715b;
+    text-align: center;
+    font-weight: bold;
     margin-bottom: 30px;
 }
 
-.search-filter-section {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
+/* Responsivitas */
 @media (max-width: 768px) {
-    .row > div {
-        margin-bottom: 10px;
+    .search-filter-section {
+        flex-direction: column;
+    }
+
+    .search-filter-section .btn {
+        width: 100%;
     }
 }

@@ -16,14 +16,14 @@
             <li><a href="about">About</a></li>
             <li><a href="#">Contact Us</a></li>
             <li><a href="reservation" class="btn-reservation">Reservation</a></li>
-            <li><a href="reservation-list" class="btn-reservation">List</a></li>
+            <li><a href="reservation-list" class="btn-list">List</a></li>
             <!-- Cek apakah user sudah login -->
             @if(session()->has('user'))
                 <li><a href="{{ route('logout') }}" class="btn-logout">Logout</a></li>
             @else
                 <li><a href="login" class="btn-login">Login</a></li>
             @endif
-            <li><a href="settings" class="btn-reservation">Settings</a></li>
+            <li><a href="settings" class="btn-settings">Settings</a></li>
         </ul>
     </nav>
 </div>
