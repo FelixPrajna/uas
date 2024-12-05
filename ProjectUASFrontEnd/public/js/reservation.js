@@ -23,7 +23,7 @@ app.controller('ReservationController', function($scope, $http) {
             var reservationData = {
                 name: $scope.reservation.name,
                 person: parseInt($scope.reservation.person),
-                address: $scope.reservationn.address,
+                address: $scope.reservation.address,
                 schedule: $scope.reservation.schedule,
                 restaurant: $scope.reservation.restaurant,
                 symptoms: $scope.reservation.symptoms,
