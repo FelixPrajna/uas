@@ -2,21 +2,60 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\ConsultationListController;
 
-// routes/web.php
-// Route untuk menampilkan form login
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-// Route untuk proses login
-Route::post('/login', [AuthController::class, 'login'])->name('login.process');
-Route::get('/register', function () {
-    return view('auth.register'); // Pastikan view register.blade.php sudah dibuat
-})->name('register');
+// Tambahkan rute baru untuk menghapus akun
+Route::post('/delete-account', [UserController::class, 'deleteAccount'])->name('delete-account');
 
-Route::post('/register', [AuthController::class, 'register'])->name('register.process');
+Route::post('/change-password', [UserController::class, 'changePassword'])->name('change-password');
 
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/change-email', [UserController::class, 'changeEmail'])->name('change-email');
+
+Route::post('/change-username', [UserController::class, 'changeUsername'])->name('change-username');
+
+Route::post('/change-profile-image', [UserController::class, 'changeProfileImage'])->name('change-profile-image');
+
+Route::post('/remove-profile-image', [UserController::class, 'removeProfileImage'])->name('remove-profile-image');
+
+Route::middleware(['auth.user'])->group(function () {
+    Route::get('/', [HomeController::class, 'index']);
+});
+
+Route::view('/register', 'register');
+Route::post('/api/register', [AuthController::class, 'register']);
+
+// Route untuk tampilan login
+Route::get('/login', function () {
+    return view('login');
+});
+
+// Route untuk login dengan metode POST
+Route::post('/login', [AuthController::class, 'login']);
+
+// Setelah login berhasil, arahkan ke halaman index
+Route::get('/', function () {
+    return view('/');  // atau sesuai dengan tampilan utama kamu
+})->name('home');
+
+Route::get('/api/users', function () {
+    return response()->json([
+        'username' => session('username', null),
+    ]);
+});
+
+Route::get('/logout', function () {
+    session()->forget('username');
+    return redirect('/');
+});
 
 
+Route::post('/consultations', [ConsultationController::class, 'store'])->name('consultations.store');
+Route::get('/consultation-list', [ConsultationListController::class, 'index'])->name('consultation.list');
+Route::get('/api/consultations', [ConsultationListController::class, 'getConsultations']);
+Route::get('/consultation', function () {
+    return view('consultation');
+});
 
 Route::get('/', function () {
     return view('index');

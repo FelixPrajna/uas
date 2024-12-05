@@ -2,90 +2,57 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
-use MongoDB\Client;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Routing\Controller;
 
 class AuthController extends Controller
 {
-    public function showLoginForm()
-{
-    return view('auth.login'); // Pastikan file login.blade.php ada di folder resources/views/auth
-}
-public function register(Request $request)
-{
-    \Log::info('CSRF Token:', [
-        'session' => session('_token'),
-        'input' => $request->_token,
-    ]);
-    
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email',
-        'password' => 'required|min:6',
-    ]);
-
-    $client = new Client(env('DB_URI'));
-    $collection = $client->uas_projek->users;
-
-    $existingUser = $collection->findOne(['email' => $request->email]);
-
-    if ($existingUser) {
-        return redirect()->back()->withErrors(['email' => 'Email already exists']);
-    }
-
-    $collection->insertOne([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => bcrypt($request->password),
-        'created_at' => now(),
-        'updated_at' => now(),
-    ]);
-
-    return redirect()->route('login')->with('success', 'Registration successful! Please login.');
-}
-
-
-public function login(Request $request)
-{
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
-
-    $client = new Client(env('DB_URI'));
-    $collection = $client->uas_projek->users;
-
-    $user = $collection->findOne(['email' => $request->email]);
-
-    if ($user && Hash::check($request->password, $user['password'])) {
-        // Simpan data user yang diperlukan ke dalam session
-        session([
-            'user' => [
-                'id' => (string)$user['_id'], // Simpan ID user jika diperlukan
-                'name' => $user['name'],
-                'email' => $user['email'],
-            ]
+    public function login(Request $request)
+    {
+        $data = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
-        return redirect('/')->with('success', 'Login successful!'); // Arahkan ke halaman Home
+        $user = User::findByEmail($data['email']);
+
+        if (!$user) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Your account is not registered',
+            ], 404);
+        }
+
+        if (!Hash::check($data['password'], $user['password'])) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Your password does not match',
+            ], 401);
+        }
+
+        session(['user' => (array) $user]);
+
+        // Arahkan ke halaman home
+        return redirect('/');
     }
 
-    return redirect()->back()->withErrors(['error' => 'Invalid credentials']);
-}
+    public function register(Request $request)
+    {
+        // Validasi input
+        $data = $request->validate([
+            'username' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+        ]);
 
+        // Simpan user baru
+        $userId = User::createUser($data);
 
-
-
-public function logout(Request $request)
-{
-    // Hapus data sesi
-    session()->forget('user');
-    session()->flush();
-
-    // Redirect ke halaman utama
-    return redirect()->route('index')->with('success', 'You have been logged out.');
-}
-
+        return response()->json([
+            'message' => 'Registration successful',
+            'userId' => (string) $userId,
+        ], 201);
+    }
 }
