@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ConsultationController;
-use App\Http\Controllers\ConsultationListController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ReservationListController;
 use Illuminate\Support\Facades\Auth;
 
 // Tambahkan rute baru untuk menghapus akun
@@ -45,13 +45,17 @@ Route::get('/api/users', function () {
     ]);
 });
 
+Route::get('/settings', function () {
+    return view('settings');
+});
+
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::post('/reservations', [ConsultationController::class, 'store'])->name('reservations.store');
-Route::get('/consultation-list', [ConsultationListController::class, 'index'])->name('consultation.list');
-Route::get('/api/consultations', [ConsultationListController::class, 'getConsultations']);
-Route::get('/consultation', function () {
-    return view('consultation');
+Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
+Route::get('/reservation-list', [ReservationListController::class, 'index'])->name('reservation.list');
+Route::get('/api/reservations', [ReservationListController::class, 'getReservations']);
+Route::get('/reservation', function () {
+    return view('reservation');
 });
 
 Route::get('/', function () {

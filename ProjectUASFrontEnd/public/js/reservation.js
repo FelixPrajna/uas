@@ -1,41 +1,41 @@
-var app = angular.module('consultationApp', []);
+var app = angular.module('reservationApp', []);
 
 function redirectToHome() {
     window.location.href = '/home';
 }
 
-app.controller('ConsultationController', function($scope, $http) {
-    // Initialize consultation object
-    $scope.consultation = {};
+app.controller('ReservationController', function($scope, $http) {
+    // Initialize reservation object
+    $scope.reservation = {};
     
-    // List of available doctors
-    $scope.doctors = [
-        'Dr. Smith',
-        'Dr. Johnson',
-        'Dr. Williams',
-        'Dr. Brown'
+    // List of available restaurants
+    $scope.restaurants = [
+        'Pierre',
+        'Altitude Grill',
+        'Isshin',
+        'Ojju'
     ];
 
     // Form submission handler
     $scope.submitForm = function() {
-        if ($scope.consultForm.$valid) {
+        if ($scope.reserForm.$valid) {
             // Prepare the data
-            var consultationData = {
-                name: $scope.consultation.name,
-                age: parseInt($scope.consultation.age),
-                address: $scope.consultation.address,
-                schedule: $scope.consultation.schedule,
-                doctor: $scope.consultation.doctor,
-                symptoms: $scope.consultation.symptoms,
-                description: $scope.consultation.description || ''
+            var reservationData = {
+                name: $scope.reservation.name,
+                person: parseInt($scope.reservation.person),
+                address: $scope.reservationn.address,
+                schedule: $scope.reservation.schedule,
+                restaurant: $scope.reservation.restaurant,
+                symptoms: $scope.reservation.symptoms,
+                description: $scope.reservation.description || ''
             };
 
             // Send POST request to API
-            $http.post('/api/consultations', consultationData)
+            $http.post('/api/reservations', reservationData)
                 .then(function(response) {
                     // Show success message
                     Toastify({
-                        text: "Consultation scheduled successfully!",
+                        text: "Reservation scheduled successfully!",
                         duration: 3000,
                         style: {
                             background: "#7FA98E"
@@ -43,9 +43,9 @@ app.controller('ConsultationController', function($scope, $http) {
                     }).showToast();
                     
                     // Reset form
-                    $scope.consultation = {};
-                    $scope.consultForm.$setPristine();
-                    $scope.consultForm.$setUntouched();
+                    $scope.reservation = {};
+                    $scope.reserForm.$setPristine();
+                    $scope.reserForm.$setUntouched();
                 })
                 .catch(function(error) {
                     // Show error message

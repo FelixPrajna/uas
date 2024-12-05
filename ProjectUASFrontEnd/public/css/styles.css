@@ -954,4 +954,28 @@ form input {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
 
+/* Style for Login Button */
+.btn-reservation {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 25px;
+    background-color: #78a52a; /* Warna biru cerah */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-reservation:hover {
+    background-color: #6dae23; /* Warna biru lebih gelap */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-reservation:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
 

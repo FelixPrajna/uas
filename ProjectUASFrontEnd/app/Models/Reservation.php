@@ -4,7 +4,7 @@ namespace App\Models;
 
 use MongoDB\Client;
 
-class Consultation
+class Reservation
 {
     protected static $client;
 
@@ -17,11 +17,11 @@ class Consultation
         }
 
         // Mengembalikan koleksi "consultations" dari database yang ditentukan
-        return self::$client->selectCollection(env('MONGO_DB_DATABASE', 'uas-projek'), 'consultations');
+        return self::$client->selectCollection(env('MONGO_DB_DATABASE', 'uas-projek'), 'reservations');
     }
 
     // Fungsi untuk membuat konsultasi baru
-    public static function createConsultation(array $data)
+    public static function createReservation(array $data)
     {
         $collection = self::connect();
         $result = $collection->insertOne($data);
@@ -29,7 +29,7 @@ class Consultation
         return $result->getInsertedId();
     }
 
-    public static function getAllConsultations()
+    public static function getAllReservations()
     {
         $collection = self::connect();
         $cursor = $collection->find();

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="consultationListApp">
+<html lang="en" ng-app="reservationListApp">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultation List</title>
+    <title>Reservation List</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="{{ asset('css/consultation-list.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/reservation-list.css') }}" rel="stylesheet">
 </head>
-<body ng-controller="ConsultationListController">
+<body ng-controller="ReservationListController">
     <div class="container mt-4">
-        <h2 class="mb-4">Consultation List</h2>
+        <h2 class="mb-4">Reservation List</h2>
 
         <!-- Search and Filter Section -->
         <div class="row mb-4">
@@ -19,19 +19,19 @@
                 <input type="text" 
                        class="form-control" 
                        ng-model="searchText" 
-                       placeholder="Search consultations...">
+                       placeholder="Search reservations...">
             </div>
             <div class="col-md-3">
-                <select class="form-select" ng-model="filterDoctor">
-                    <option value="">All Doctors</option>
-                    <option ng-repeat="doctor in doctors" value="@{{doctor}}">@{{doctor}}</option>
+                <select class="form-select" ng-model="filterRestaurant">
+                    <option value="">All Restaurants</option>
+                    <option ng-repeat="restaurant in restaurants" value="@{{restaurant}}">@{{restaurant}}</option>
                 </select>
             </div>
             <div class="col-md-3">
                 <select class="form-select" ng-model="sortBy">
                     <option value="schedule">Sort by Date</option>
                     <option value="name">Sort by Name</option>
-                    <option value="doctor">Sort by Doctor</option>
+                    <option value="restaurant">Sort by Restaurant</option>
                 </select>
             </div>
             <div class="col-md-2">
@@ -41,37 +41,37 @@
             </div>
         </div>
 
-        <!-- Consultations Table -->
+        <!-- Reservations Table -->
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Age</th>
-                        <th>Doctor</th>
+                        <th>Person</th>
+                        <th>Restaurant</th>
                         <th>Schedule</th>
-                        <th>Symptoms</th>
+                        <th>Phone</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="consultation in consultations | filter:searchFilter | filter:doctorFilter | orderBy:sortBy:sortReverse">
-                        <td>@{{consultation.name}}</td>
-                        <td>@{{consultation.age}}</td>
-                        <td>@{{consultation.doctor}}</td>
-                        <td>@{{formatDate(consultation.schedule)}}</td>
-                        <td>@{{consultation.symptoms}}</td>
+                    <tr ng-repeat="reservation in reservations | filter:searchFilter | filter:restaurantFilter | orderBy:sortBy:sortReverse">
+                        <td>@{{reservation.name}}</td>
+                        <td>@{{reservation.person}}</td>
+                        <td>@{{reservation.restaurant}}</td>
+                        <td>@{{formatDate(reservation.schedule)}}</td>
+                        <td>@{{reservation.symptoms}}</td>
                         <td>
-                            <button class="btn btn-sm btn-primary me-1" ng-click="editConsultation(consultation)">
+                            <button class="btn btn-sm btn-primary me-1" ng-click="editReservation(reservation)">
                                 Edit
                             </button>
-                            <button class="btn btn-sm btn-danger" ng-click="deleteConsultation(consultation)">
+                            <button class="btn btn-sm btn-danger" ng-click="deleteReservation(reservation)">
                                 Delete
                             </button>
                         </td>
                     </tr>
-                    <tr ng-if="consultations.length === 0">
-                        <td colspan="6" class="text-center">No consultations found</td>
+                    <tr ng-if="reservations.length === 0">
+                        <td colspan="6" class="text-center">No reservations found</td>
                     </tr>
                 </tbody>
             </table>
@@ -83,6 +83,6 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script src="{{ asset('js/consultation-list.js') }}"></script>
+    <script src="{{ asset('js/reservation-list.js') }}"></script>
 </body>
 </html>

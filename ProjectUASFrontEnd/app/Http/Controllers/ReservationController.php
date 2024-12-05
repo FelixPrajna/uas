@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Consultation;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
-class ConsultationController extends BaseController
+class ReservationController extends BaseController
 {
     public function store(Request $request)
     {
         try {
             $user = session('user');
             if (!$user) {
-                return back()->with('error', 'You must be logged in to schedule a consultation.');
+                return back()->with('error', 'You must be logged in to schedule reservation.');
             }
 
             $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
-                'age' => 'required|integer',
+                'person' => 'required|integer',
                 'address' => 'required|string|max:255',
                 'schedule' => 'required|date',
-                'doctor' => 'required|string',
+                'restaurants' => 'required|string',
                 'symptoms' => 'required|string',
                 'description' => 'nullable|string',
             ]);
@@ -29,11 +29,11 @@ class ConsultationController extends BaseController
             $validatedData['user_id'] = $user['_id'];
             $validatedData['username'] = $user['username']; 
 
-            Consultation::createConsultation($validatedData);
+            Reservation::createReservation($validatedData);
 
-            return redirect('/')->with('success', 'Consultation scheduled successfully!');
+            return redirect('/')->with('success', 'Reservation scheduled successfully!');
         } catch (\Exception $e) {
-            return back()->with('error', 'Failed to schedule consultation. Please try again.');
+            return back()->with('error', 'Failed to schedule reservation. Please try again.');
         }
     }
 

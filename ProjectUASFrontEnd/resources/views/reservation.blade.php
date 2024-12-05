@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <link rel="stylesheet" href="css/consultation.css">
+    <link rel="stylesheet" href="css/reservation.css">
     <link rel="icon" href="./images/favicon.ico">
-    <title>Ponsonbys Care - Consultation</title>
+    <title>biteofbliss Reservation</title>
 </head>
 <body>
     <div id="wrapper">
         <div id="left"></div>
         <div id="right">
-            <h1>Consultation Appointment</h1>
+            <h1>Reservation Appointment</h1>
 
             @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -29,7 +29,7 @@
                 </div>
             @endif
 
-            <form id="form" method="POST" action="{{ route('consultations.store') }}">
+            <form id="form" method="POST" action="{{ route('reservations.store') }}">
                 @csrf
                 <div>
                     <span>Full Name:</span>
@@ -43,13 +43,13 @@
                 </div>
 
                 <div>
-                    <span>Age:</span>
+                    <span>Total Person:</span>
                     <input
                         type="number"
-                        name="age"
+                        name="person"
                         autocomplete="off"
                         placeholder="25"
-                        id="age"
+                        id="person"
                     >
                 </div>
 
@@ -74,23 +74,23 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Doctor</label>
-                    <select class="form-control" name="doctor" required>
-                        <option value="">Pilih Dokter</option>
-                        <option value="Dr. Ahmad">Dr. Ahmad - Umum</option>
-                        <option value="Dr. Sarah">Dr. Sarah - Spesialis Anak</option>
-                        <option value="Dr. Budi">Dr. Budi - Spesialis Jantung</option>
+                    <label class="form-label">Restaurant</label>
+                    <select class="form-control" name="restaurant" required>
+                        <option value="">Pilih Restaurant</option>
+                        <option value="Pierre">Pierre</option>
+                        <option value="Altitude Grill">Altitude Grill</option>
+                        <option value="Isshin">Isshin</option>
                     </select>
                 </div>
 
                 <div>
-                    <span>Symptoms:</span>
+                    <span>Phone Numbers:</span>
                     <input
                         type="text"
-                        name="symptoms"
+                        name="phone"
                         autocomplete="off"
-                        placeholder="Fever, headache, etc."
-                        id="symptoms"
+                        placeholder="08#######"
+                        id="phone"
                     >
                 </div>
 
@@ -112,6 +112,6 @@
     </div>
     
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="js/consultation.js"></script>
+    <script src="js/reservation.js"></script>
 </body>
 </html>

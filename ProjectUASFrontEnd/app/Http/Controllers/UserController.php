@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Models\Consultation;
+use App\Models\Reservation;
 
 class UserController extends Controller
 {
@@ -119,9 +119,9 @@ class UserController extends Controller
             $user['username'] = $request->new_username;
             $request->session()->put('user', $user);
 
-            // Update username in all related consultations using MongoDB syntax
-            $consultationCollection = Consultation::connect();
-            $consultationCollection->updateMany(
+            // Update username in all related reservations using MongoDB syntax
+            $reservationCollection = Reservation::connect();
+            $reservationCollection->updateMany(
                 ['user_id' => $currentUser['_id']],
                 [
                     '$set' => [
