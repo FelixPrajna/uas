@@ -48,7 +48,7 @@
                         type="number"
                         name="person"
                         autocomplete="off"
-                        placeholder="25"
+                        placeholder="?"
                         id="person"
                     >
                 </div>
@@ -87,10 +87,10 @@
                     <span>Phone Numbers:</span>
                     <input
                         type="text"
-                        name="phone"
+                        name="phone_number"
                         autocomplete="off"
                         placeholder="08#######"
-                        id="phone"
+                        id="phone_number"
                     >
                 </div>
 

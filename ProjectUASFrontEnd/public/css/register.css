@@ -1,8 +1,9 @@
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #1a92bedb, #2e6476);
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #e8f0f2, #cfe3e6); /* Gradien biru pastel dan hijau muda */
     margin: 0;
     padding: 0;
     display: flex;
@@ -13,12 +14,12 @@ body {
 }
 
 .register-container {
-    background: #ffffff; 
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     text-align: center;
     animation: fadeIn 0.8s ease-in-out;
 }
@@ -26,48 +27,52 @@ body {
 .register-container h1 {
     font-size: 2rem;
     margin-bottom: 20px;
-    font-weight: bold;
-    color: #2e6476; 
+    font-weight: 700;
+    color: #3a4f52; /* Warna abu-abu biru lembut */
 }
 
 label {
     text-align: left;
     font-weight: 500;
-    margin-top: 15px;
+    margin-top: 10px;
     display: block;
+    font-size: 0.9rem;
+    color: #495057; /* Warna teks gelap natural */
 }
 
 input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    transition: border-color 0.3s;
+    border: 1px solid #ccd9dc; /* Warna bingkai lembut */
+    border-radius: 8px;
+    background-color: #f9fafa; /* Latar belakang input lembut */
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 input:focus {
-    border-color: #1a92bedb; 
-    box-shadow: 0 0 5px rgba(26, 146, 190, 0.3);
+    border-color: #8cb3b6; /* Warna hijau pastel */
+    box-shadow: 0 0 5px rgba(140, 179, 182, 0.4);
     outline: none;
 }
 
 button {
     margin-top: 20px;
-    padding: 10px;
+    padding: 12px;
     width: 100%;
-    background: #2e6476; 
+    background: #8cb3b6; /* Warna tombol hijau pastel */
     color: white;
     font-size: 1rem;
+    font-weight: 600;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
-    background: #1a92bedb; 
-    transform: translateY(-3px);
+    background: #6a9698; /* Warna hover lebih gelap */
+    transform: translateY(-2px);
 }
 
 button:active {
@@ -75,15 +80,20 @@ button:active {
 }
 
 .register-link {
-    color: #2e6476;
-    cursor: pointer; 
-    text-decoration: none; 
+    display: block;
+    margin-top: 15px;
+    color: #3a4f52; /* Warna link abu-abu biru lembut */
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.9rem;
 }
+
 .register-link:hover {
-    text-decoration: underline; 
+    text-decoration: underline;
+    color: #6a9698;
 }
 
-
+/* Animasi masuk */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -95,6 +105,7 @@ button:active {
     }
 }
 
+/* Responsif */
 @media (max-width: 576px) {
     .register-container {
         padding: 20px;

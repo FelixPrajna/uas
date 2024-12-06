@@ -21,7 +21,7 @@ class CreateReservationsTable extends Migration
             $table->string('address');
             $table->dateTime('schedule');
             $table->string('restaurant');
-            $table->string('symptoms');
+            $table->string('phone_number');
             $table->text('description')->nullable();
             $table->timestamps();
         });
